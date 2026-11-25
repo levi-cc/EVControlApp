@@ -75,11 +75,11 @@ class MainActivity : Activity() {
     }
 
     private fun buildGearButton(): TextView {
-        val size = (44 * resources.displayMetrics.density).toInt()
+        val size = (34 * resources.displayMetrics.density).toInt()
         val margin = (12 * resources.displayMetrics.density).toInt()
         return TextView(this).apply {
             text = "\u2699"
-            textSize = 22f
+            textSize = 17f
             setTextColor(Color.WHITE)
             gravity = Gravity.CENTER
             alpha = 0.45f
