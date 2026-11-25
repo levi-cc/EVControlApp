@@ -141,7 +141,7 @@ class MainActivity : Activity() {
             """.trimIndent()
             view.evaluateJavascript(js, null)
         } else {
-            // Pas d'identifiants, ou la tentative précédente a échoué
+            // No credentials, or the previous attempt failed
             askCredentials(failed = !user.isNullOrEmpty() && !pass.isNullOrEmpty())
         }
     }
@@ -152,12 +152,12 @@ class MainActivity : Activity() {
 
         val pad = (16 * resources.displayMetrics.density).toInt()
         val userInput = EditText(this).apply {
-            hint = "Nom d'utilisateur"
+            hint = "Username"
             inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS
             setText(prefs.getString("username", ""))
         }
         val passInput = EditText(this).apply {
-            hint = "Mot de passe"
+            hint = "Password"
             inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
             setText(prefs.getString("password", ""))
         }
@@ -169,21 +169,21 @@ class MainActivity : Activity() {
         }
 
         AlertDialog.Builder(this)
-            .setTitle(if (failed) "Identifiants invalides" else "Identifiants de connexion")
+            .setTitle(if (failed) "Invalid credentials" else "Login credentials")
             .setView(layout)
             .setOnDismissListener { dialogShown = false }
-            .setPositiveButton("Enregistrer") { _, _ ->
+            .setPositiveButton("Save") { _, _ ->
                 prefs.edit()
                     .putString("username", userInput.text.toString().trim())
                     .putString("password", passInput.text.toString())
                     .apply()
                 resetSession()
             }
-            .setNeutralButton("Oublier") { _, _ ->
+            .setNeutralButton("Forget") { _, _ ->
                 prefs.edit().clear().apply()
                 resetSession()
             }
-            .setNegativeButton("Annuler", null)
+            .setNegativeButton("Cancel", null)
             .show()
     }
 

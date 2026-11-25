@@ -1,13 +1,22 @@
 # EV Control (Android)
 
-WebView qui ouvre https://control.effettoventuri.eu/ et se connecte automatiquement.
+WebView app that opens https://control.effettoventuri.eu/ and signs in automatically.
 
-## Définir / changer l'utilisateur et le mot de passe
-- Au premier lancement (ou si la connexion échoue), un dialogue s'ouvre automatiquement.
-- À tout moment : appuyer sur le bouton **⚙** (semi-transparent, en bas à droite), saisir user et mot de passe,
-  **Enregistrer** (la session est réinitialisée et l'app se reconnecte). **Oublier** efface les identifiants.
-- Les identifiants sont stockés chiffrés sur le téléphone (EncryptedSharedPreferences), jamais dans le dépôt.
+## Set / change the username and password
+- On first launch (or when the login fails), a dialog opens automatically.
+- At any time: tap the **⚙** button (semi-transparent, bottom right), enter the username and password,
+  then **Save** (the session is reset and the app signs in again). **Forget** deletes the stored credentials.
+- Credentials are stored encrypted on the phone (EncryptedSharedPreferences) and never in the repository.
 
-## Obtenir l'APK (Github Actions, sans Android Studio)
-1. Onglet **Actions** > workflow **Build APK** (se lance au push, ou **Run workflow**) > dernier run > artifact **EVControl-debug-apk**.
-2. Copier `app-debug.apk` sur le téléphone et l'installer (autoriser les sources inconnues).
+## Get the APK (no Android Studio needed)
+APKs are built by GitHub Actions (workflow **Build APK**).
+
+- **Release (recommended)**: push a tag starting with `v`; the workflow builds the APK and attaches it
+  to a GitHub release (**Releases** tab), named `EVControl-<tag>.apk`.
+  ```
+  git tag v1.1
+  git push origin v1.1
+  ```
+- **Latest build**: **Actions** tab > **Build APK** > latest run > artifact **EVControl-debug-apk**.
+
+Copy the APK to the phone and install it (allow installs from unknown sources).
