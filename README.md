@@ -8,11 +8,6 @@ WebView qui ouvre https://control.effettoventuri.eu/ et se connecte automatiquem
   **Enregistrer** (la session est réinitialisée et l'app se reconnecte). **Oublier** efface les identifiants.
 - Les identifiants sont stockés chiffrés sur le téléphone (EncryptedSharedPreferences), jamais dans le dépôt.
 
-## Obtenir l'APK (sans Android Studio)
-1. Créer un dépôt GitHub et pousser ce dossier sur la branche `main` :
-   ```
-   git init && git add . && git commit -m "EV Control" && git branch -M main
-   git remote add origin https://github.com/<toi>/<repo>.git && git push -u origin main
-   ```
-2. Onglet **Actions** > workflow **Build APK** (se lance au push, ou **Run workflow**) > dernier run > artifact **EVControl-debug-apk**.
-3. Copier `app-debug.apk` sur le téléphone et l'installer (autoriser les sources inconnues).
+## Obtenir l'APK (Github Actions, sans Android Studio)
+1. Onglet **Actions** > workflow **Build APK** (se lance au push, ou **Run workflow**) > dernier run > artifact **EVControl-debug-apk**.
+2. Copier `app-debug.apk` sur le téléphone et l'installer (autoriser les sources inconnues).
